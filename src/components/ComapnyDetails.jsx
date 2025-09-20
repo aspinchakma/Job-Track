@@ -14,33 +14,37 @@ const ComapnyDetails = () => {
   const targetedCompanyData = companies.find((comp) => comp.id == id);
   return (
     <div className="w-[95%] lg:w-[85%] mx-auto mt-5">
-      <div className="p-[20px] shadow-lg rounded-lg">
-        <img className="min-h-[120px] rounded-lg" src={companyBg} alt="" />
+      <div className="p-[10px] lg:p-5 shadow-lg rounded-lg">
+        <img
+          className="min-h-[250px] rounded-lg object-cover"
+          src={companyBg}
+          alt=""
+        />
         <div className="flex flex-col gap-2 lg:flex-row lg:justify-between lg:items-end">
           <div>
             <div className="flex items-center gap-4 relative px-[20px] lg:px-[40px] mt-2">
               <img
-                className="w-[120px] h-[120px] relative top-[-30px] rounded-lg"
+                className="w-[140px] h-[140px] relative top-[-30px] rounded-lg shadow-lg"
                 src={targetedCompanyData?.logo}
                 alt=""
               />
               <div>
-                <div className="flex items-center gap-2 text-[28px] lg:text-[35px]">
-                  <h2 className="leading-0">{targetedCompanyData?.name}</h2>
+                <div className="flex items-center gap-2 text-[24px] lg:text-[28px] font-bold">
+                  <h2 className="lg:leading-0">{targetedCompanyData?.name}</h2>
 
                   <MdVerified className="text-[#2747d5]" />
                 </div>
 
-                <p className="text-[19px] font-semibold">
+                <p className="text-[19px] font-semibold mt-2">
                   {targetedCompanyData?.industry}
                 </p>
-                <div className="flex items-center gap-1">
+                <div className="flex items-center gap-1 my2">
                   <FaLocationDot />
                   <p>{targetedCompanyData?.location}</p>
                 </div>
                 <div>
                   <Link
-                    className="text-[#2747d5] flex items-center gap-1"
+                    className="text-[#2747d5] flex items-center gap-1 font-semibold"
                     to={targetedCompanyData?.website}
                   >
                     Visit Website <IoOpenOutline />

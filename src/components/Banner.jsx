@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 
 const Banner = () => {
   return (
-    <div className="bg-[#f8e968] py-[60px]">
+    <div className="bg-[#061767] text-white py-[60px]">
       <div className="w-[95%] mx-auto lg:w-[85%] ">
         <div className="text-center lg:w-[70%] mx-auto ">
           <p className="lg:mb-5">

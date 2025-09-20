@@ -1,9 +1,8 @@
-import { Link, NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
 import userPhoto from "../assets/user.png";
 
 const Header = () => {
-  const location = useLocation();
   const list = (
     <>
       <li>
@@ -21,8 +20,8 @@ const Header = () => {
     </>
   );
   return (
-    <div className={`${location.pathname === "/" ? "bg-[#f8e968]" : ""}`}>
-      <div className="navbar lg:w-[85%] mx-auto border-2 border-black w-[95%]">
+    <div>
+      <div className="navbar lg:w-[85%] mx-auto w-[95%] mb-8">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
