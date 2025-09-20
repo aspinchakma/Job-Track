@@ -12,7 +12,7 @@ const Banner = () => {
             Find Your <span className="text-[#EE7236]">Dream Job</span> That
             Suit With Exciting Opportunities
           </h1>
-          <p className="my-[30px]">
+          <p className="my-[30px] lg:my-10">
             Embark on a journey towards your dream career, your ultimate
             job-finding companion! We've curated a platform that connects
             talented individuals with exciting opportunities.
@@ -27,41 +27,41 @@ const Banner = () => {
               Explore Now
             </button>
           </div>
-          <div className="text-[15px] flex gap-3 items-center font-semibold mt-3 text-gray-500">
+          <div className="text-[15px] lg:flex gap-3 items-center font-semibold mt-3 text-gray-500">
             <h3 className="">Popular Categories:</h3>
-            <Link className=" underline">Product Manager</Link>
-            <Link className=" underline">Frontend Dev</Link>
-            <Link className=" underline">Data Analyst</Link>
+            <Link className=" underline p-2">Product Manager</Link>
+            <Link className=" underline p-2">Frontend Dev</Link>
+            <Link className=" underline p-2">Data Analyst</Link>
           </div>
         </div>
 
-        <div className="lg:w-[70%] mx-auto mt-6">
+        <div className="lg:w-[70%] mx-auto mt-5 lg:mt-9">
           <div className="flex justify-between">
             <div className="flex items-center text-center">
               <div>
-                <h2 className="text-[20px]">Live Jobs</h2>
-                <p className="text-[24px] font-extrabold">30000+</p>
+                <h2 className="lg:text-[20px] text-[15px]">Live Jobs</h2>
+                <p className="lg:text-[24px] font-extrabold">30000+</p>
               </div>
             </div>
             <div className="w-[1px] bg-black"></div>
             <div className="flex items-center text-center">
               <div>
-                <h2 className="text-[20px]">Daily Job Post</h2>
-                <p className="text-[24px] font-extrabold">25000+</p>
+                <h2 className="lg:text-[20px] text-[15px]">Daily Job Post</h2>
+                <p className="lg:text-[24px] font-extrabold">25000+</p>
               </div>
             </div>
             <div className="w-[1px] bg-black"></div>
             <div className="flex items-center text-center">
               <div>
-                <h2 className="text-[20px]">People Get Hired</h2>
-                <p className="text-[24px] font-extrabold">5000+</p>
+                <h2 className="lg:text-[20px] text-[15px]">People Get Hired</h2>
+                <p className="lg:text-[24px] font-extrabold">5000+</p>
               </div>
             </div>
             <div className="w-[1px] bg-black"></div>
             <div className="flex items-center text-center">
               <div>
-                <h2 className="text-[20px]"> Companies</h2>
-                <p className="text-[24px] font-extrabold">1000+</p>
+                <h2 className="lg:text-[20px] text-[15px]"> Companies</h2>
+                <p className="lg:text-[24px] font-extrabold">1000+</p>
               </div>
             </div>
           </div>

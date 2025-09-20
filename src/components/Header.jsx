@@ -1,8 +1,9 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import logo from "../assets/logo.png";
 import userPhoto from "../assets/user.png";
 
 const Header = () => {
+  const location = useLocation();
   const list = (
     <>
       <li>
@@ -20,7 +21,7 @@ const Header = () => {
     </>
   );
   return (
-    <div>
+    <div className={`${location.pathname === "/" ? "bg-[#f8e968]" : ""}`}>
       <div className="navbar lg:w-[85%] mx-auto border-2 border-black w-[95%]">
         <div className="navbar-start">
           <div className="dropdown">
@@ -48,7 +49,7 @@ const Header = () => {
               {list}
             </ul>
           </div>
-          <img src={logo} alt="" />
+          <img className="rounded-full" src={logo} alt="" />
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1">{list}</ul>
@@ -56,7 +57,7 @@ const Header = () => {
         <div className="navbar-end gap-2">
           <Link to={`/profile`}>
             {" "}
-            <img src={userPhoto} alt="" />
+            <img className="rounded-full" src={userPhoto} alt="" />
           </Link>
           <Link to={`/login`} className="btn btn-primary">
             Log in
