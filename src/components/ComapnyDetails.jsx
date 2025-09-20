@@ -71,7 +71,7 @@ const ComapnyDetails = () => {
       </div>
       {/* Available job section */}
       <div>
-        <h3 className="text-[20px] flex gap-2 font-bold mt-5">
+        <h3 className="text-[20px] flex gap-2 font-bold mt-8">
           <span className="text-[#08068d] ">
             {targetedCompanyData?.jobs?.length < 10
               ? `0${targetedCompanyData.jobs.length}`
@@ -79,7 +79,7 @@ const ComapnyDetails = () => {
           </span>
           total jobs available.
         </h3>
-        <div>
+        <div className="grid grid-cols-1 gap-4 mt-5">
           {targetedCompanyData?.jobs.map((job) => (
             <Jobs key={job.id} job={job} />
           ))}
