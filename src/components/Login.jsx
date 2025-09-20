@@ -1,8 +1,15 @@
+import { useState } from "react";
+import { GoEyeClosed } from "react-icons/go";
+import { RxEyeOpen } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import githubImg from "../assets/githubIcon.png";
 import googleImg from "../assets/googleIcon.png";
 import signImg from "../assets/signin.png";
 const Login = () => {
+  const [isOpen, setIsOpen] = useState(false);
+  const handleShowPassword = () => {
+    setIsOpen(!isOpen);
+  };
   return (
     <div className="w-[95%] lg:w-[85%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 py-[10px] lg:py-[20px]">
       <div className="flex items-center">
@@ -41,15 +48,32 @@ const Login = () => {
               type="email"
               className="input w-full mb-4 text-[16px] py-6 "
               placeholder="Email"
+              required
             />
             <label className="label text-[18px] mb-2 font-semibold text-black">
               Password
             </label>
-            <input
-              type="password"
-              className="input w-full mb-0 text-[16px] py-6 "
-              placeholder="Password"
-            />
+            <div className="relative">
+              <input
+                type={`${isOpen ? "text" : "password"}`}
+                className="input w-full mb-0 text-[16px] py-6 "
+                placeholder="Password"
+                required
+              />
+              <div className="absolute top-[50%] right-[10px] translate-y-[-50%] z-10">
+                {isOpen ? (
+                  <RxEyeOpen
+                    onClick={handleShowPassword}
+                    className=" text-[20px] text-[#666666] font-bold cursor-pointer"
+                  />
+                ) : (
+                  <GoEyeClosed
+                    onClick={handleShowPassword}
+                    className=" text-[20px] text-[#666666] font-bold cursor-pointer"
+                  />
+                )}
+              </div>
+            </div>
             <div>
               <Link
                 to={`/forgetpassword`}
@@ -62,7 +86,7 @@ const Login = () => {
             <button className="py-3 bg-[#061767] text-white font-semibold text-[16px] rounded-[4px] cursor-pointer border-1 border-[#061767] hover:text-[#061767] hover:bg-white mt-4 duration-500">
               Login
             </button>
-            <div className="h-[22px]">
+            <div className="h-[20px]">
               <p className="text-error text-[16px] text-center font-bold"></p>
             </div>
             <p className="text-[15px] mx-auto">
