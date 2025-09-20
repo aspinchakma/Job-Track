@@ -1,11 +1,11 @@
 import { useContext } from "react";
 import { CompaniesContext } from "../Context/MixContext";
+import Company from "./Company";
 
 const Companies = () => {
-  const context = useContext(CompaniesContext);
-  console.log(context);
+  const companies = useContext(CompaniesContext);
   return (
-    <div className="py-5 lg:py-10 min-h-screen">
+    <div className="min-h-screen my-10 lg:my-20">
       <div className=" w-[95%] lg:w-[85%] mx-auto">
         <div className="grid lg:grid-cols-3">
           <div className="lg:col-span-2">
@@ -24,6 +24,11 @@ const Companies = () => {
               View All Companies
             </button>
           </div>
+        </div>
+        <div className="grid grid-cols-1 lg:grid-cols-4 gap-3 lg:gap-4 mt-5 lg:mt-8">
+          {companies?.map((company) => (
+            <Company key={company.id} company={company}></Company>
+          ))}
         </div>
       </div>
     </div>
