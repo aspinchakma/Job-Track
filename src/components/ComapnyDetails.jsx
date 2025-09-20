@@ -1,0 +1,92 @@
+import { useContext } from "react";
+import { FaLocationDot } from "react-icons/fa6";
+import { IoIosPersonAdd } from "react-icons/io";
+import { IoOpenOutline } from "react-icons/io5";
+import { MdVerified } from "react-icons/md";
+import { Link, useParams } from "react-router-dom";
+import { CompaniesContext } from "../Context/MixContext";
+import companyBg from "../assets/companyBg.jpg";
+import Jobs from "./Jobs";
+
+const ComapnyDetails = () => {
+  const { id } = useParams();
+  const companies = useContext(CompaniesContext);
+  const targetedCompanyData = companies.find((comp) => comp.id == id);
+  console.log(targetedCompanyData);
+  return (
+    <div className="w-[95%] lg:w-[85%] mx-auto mt-5">
+      <div className="p-[20px] shadow-lg rounded-lg">
+        <img className="min-h-[120px] rounded-lg" src={companyBg} alt="" />
+        <div className="flex flex-col gap-2 lg:flex-row lg:justify-between lg:items-end">
+          <div>
+            <div className="flex items-center gap-4 relative px-[20px] lg:px-[40px] mt-2">
+              <img
+                className="w-[120px] h-[120px] relative top-[-30px] rounded-lg"
+                src={targetedCompanyData?.logo}
+                alt=""
+              />
+              <div>
+                <div className="flex items-center gap-2 text-[28px] lg:text-[35px]">
+                  <h2 className="leading-0">{targetedCompanyData?.name}</h2>
+
+                  <MdVerified className="text-[#2747d5]" />
+                </div>
+
+                <p className="text-[19px] font-semibold">
+                  {targetedCompanyData?.industry}
+                </p>
+                <div className="flex items-center gap-1">
+                  <FaLocationDot />
+                  <p>{targetedCompanyData?.location}</p>
+                </div>
+                <div>
+                  <Link
+                    className="text-[#2747d5] flex items-center gap-1"
+                    to={targetedCompanyData?.website}
+                  >
+                    Visit Website <IoOpenOutline />
+                  </Link>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div className="flex items-center gap-2">
+            <button className="px-3 py-2 rounded-[4px] bg-[#2747d5] text-white border-2 cursor-pointer border-[#2747d5] hover:bg-white hover:text-[#2747d5] duration-300">
+              {targetedCompanyData?.jobs.length} Opens Jobs
+            </button>
+            <button className="px-3 py-2 rounded-[4px] border-2 cursor-pointer border-[#2747d5] flex items-center gap-3 hover:text-white hover:bg-[#2747d5] duration-300">
+              <IoIosPersonAdd className="text-[24px]" /> Follow
+            </button>
+          </div>
+        </div>
+      </div>
+      {/* about company */}
+      <div>
+        <h2 className="text-[28px] font-semibold mt-10">
+          About the <span className="text-[#08068d]">company</span>
+        </h2>
+        <p className="text-[#707070] text-[18px] mt-3">
+          {targetedCompanyData?.about}
+        </p>
+      </div>
+      {/* Available job section */}
+      <div>
+        <h3 className="text-[20px] flex gap-2 font-bold mt-5">
+          <span className="text-[#08068d] ">
+            {targetedCompanyData?.jobs?.length < 10
+              ? `0${targetedCompanyData.jobs.length}`
+              : targetedCompanyData.jobs.length}
+          </span>
+          total jobs available.
+        </h3>
+        <div>
+          {targetedCompanyData?.jobs.map((job) => (
+            <Jobs key={job.id} job={job} />
+          ))}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ComapnyDetails;
