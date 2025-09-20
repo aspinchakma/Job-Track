@@ -4,11 +4,11 @@ const Banner = () => {
   return (
     <div className="bg-[#f8e968] py-[60px]">
       <div className="w-[95%] mx-auto lg:w-[85%] ">
-        <div className="text-center lg:w-[60%] mx-auto ">
-          <p>
+        <div className="text-center lg:w-[70%] mx-auto ">
+          <p className="lg:mb-5">
             <span className="font-bold">#1</span> PLATFORM FOR JOBS
           </p>
-          <h1 className="text-[30px] lg:text-[40px] font-extrabold lg:leading-[60px]">
+          <h1 className="text-[30px] lg:text-[50px] font-extrabold lg:leading-[60px]">
             Find Your <span className="text-[#EE7236]">Dream Job</span> That
             Suit With Exciting Opportunities
           </h1>
