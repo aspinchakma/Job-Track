@@ -12,7 +12,6 @@ const ComapnyDetails = () => {
   const { id } = useParams();
   const companies = useContext(CompaniesContext);
   const targetedCompanyData = companies.find((comp) => comp.id == id);
-  console.log(targetedCompanyData);
   return (
     <div className="w-[95%] lg:w-[85%] mx-auto mt-5">
       <div className="p-[20px] shadow-lg rounded-lg">
@@ -74,14 +73,18 @@ const ComapnyDetails = () => {
         <h3 className="text-[20px] flex gap-2 font-bold mt-8">
           <span className="text-[#08068d] ">
             {targetedCompanyData?.jobs?.length < 10
-              ? `0${targetedCompanyData.jobs.length}`
-              : targetedCompanyData.jobs.length}
+              ? `0${targetedCompanyData?.jobs.length}`
+              : targetedCompanyData?.jobs.length}
           </span>
           total jobs available.
         </h3>
         <div className="grid grid-cols-1 gap-4 mt-5">
           {targetedCompanyData?.jobs.map((job) => (
-            <Jobs key={job.id} job={job} />
+            <Jobs
+              key={job.id}
+              website={targetedCompanyData?.website}
+              job={job}
+            />
           ))}
         </div>
       </div>
