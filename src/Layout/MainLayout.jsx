@@ -4,12 +4,14 @@ import Header from "../components/Header";
 
 const MainLayout = () => {
   return (
-    <div>
-      <div className="sticky top-0 bg-white">
+    <div className="flex flex-col min-h-screen">
+      <div className="sticky top-0 bg-white  mb-8 z-10">
         <Header />
       </div>
       {/* content will change  */}
-      <Outlet />
+      <div className="flex-1">
+        <Outlet />
+      </div>
       <Footer />
     </div>
   );

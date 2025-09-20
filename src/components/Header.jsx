@@ -21,7 +21,7 @@ const Header = () => {
   );
   return (
     <div>
-      <div className="navbar lg:w-[85%] mx-auto w-[95%] mb-8">
+      <div className="navbar lg:w-[85%] mx-auto w-[95%]">
         <div className="navbar-start">
           <div className="dropdown">
             <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
