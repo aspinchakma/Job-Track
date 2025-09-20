@@ -5,7 +5,7 @@ const Company = ({ company }) => {
   return (
     <Link
       to={`/company/${id}`}
-      className=" px-3 py-4 rounded-lg cursor-pointer duration-500 hover:scale-[0.95] border-1 border-black"
+      className=" px-3 py-4 rounded-lg cursor-pointer duration-500 hover:scale-[0.95] border-2 border-[#061767] hover:bg-linear-to-r hover:from-white hover:to-[#1207ea22] "
     >
       <div className="flex gap-3 items-center">
         <img className="w-[100px] h-[100px]" src={logo} alt="" />
