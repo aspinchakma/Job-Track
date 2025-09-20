@@ -14,7 +14,7 @@ const ComapnyDetails = () => {
   const targetedCompanyData = companies.find((comp) => comp.id == id);
   return (
     <div className="w-[95%] lg:w-[85%] mx-auto mt-5">
-      <div className="p-[10px] lg:p-5 shadow-lg rounded-lg">
+      <div className="px-[10px] py-[30px] lg:p-5 shadow-lg rounded-lg">
         <img
           className="min-h-[250px] rounded-lg object-cover"
           src={companyBg}
@@ -54,7 +54,8 @@ const ComapnyDetails = () => {
             </div>
           </div>
           <div className="flex items-center gap-2">
-            <button className="px-3 py-2 rounded-[4px] bg-[#2747d5] text-white border-2 cursor-pointer border-[#2747d5] hover:bg-white hover:text-[#2747d5] duration-300">
+            <button className="bg-[#061767] text-white border-2 border-[#061767] px-4 py-2 rounded-[4px] font-semibold hover:bg-white hover:text-[#061767] duration-500 cursor-pointer">
+              {targetedCompanyData?.jobs.length < 10 && "0"}
               {targetedCompanyData?.jobs.length} Opens Jobs
             </button>
             <button className="px-3 py-2 rounded-[4px] border-2 cursor-pointer border-[#2747d5] flex items-center gap-3 hover:text-white hover:bg-[#2747d5] duration-300">

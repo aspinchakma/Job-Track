@@ -58,10 +58,15 @@ const Header = () => {
             {" "}
             <img className="rounded-full" src={userPhoto} alt="" />
           </Link>
-          <Link to={`/login`} className="btn btn-primary">
+          <Link
+            to={`/login`}
+            className="bg-[#061767] text-white border-2 border-[#061767] px-4 py-2 rounded-[4px] font-semibold hover:bg-white hover:text-[#061767] duration-500 cursor-pointer "
+          >
             Log in
           </Link>
-          <button className="btn btn-primary">Log Out</button>
+          <button className="bg-[#061767] text-white border-2 border-[#061767] px-4 py-2 rounded-[4px] font-semibold hover:bg-white hover:text-[#061767] duration-500 cursor-pointer ">
+            Log Out
+          </button>
         </div>
       </div>
     </div>

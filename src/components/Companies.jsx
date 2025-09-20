@@ -5,7 +5,7 @@ import Company from "./Company";
 const Companies = () => {
   const companies = useContext(CompaniesContext);
   return (
-    <div className="min-h-screen my-10 lg:my-20">
+    <div className=" my-10 lg:my-20">
       <div className=" w-[95%] lg:w-[85%] mx-auto">
         <div className="grid lg:grid-cols-3">
           <div className="lg:col-span-2">

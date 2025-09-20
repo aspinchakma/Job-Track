@@ -21,13 +21,13 @@ const Banner = () => {
             <input
               type="text"
               placeholder="Job title, Salary, or Companies...."
-              className="bg-white flex-1 px-4 rounded-[4x]"
+              className="bg-white flex-1 px-4 rounded-[4x] text-gray-700"
             />
-            <button className="btn bg-[#10141d] text-white px-6 py-6">
+            <button className="bg-[#10141d] text-white px-6 py-3 cursor-pointer">
               Explore Now
             </button>
           </div>
-          <div className="text-[15px] lg:flex gap-3 items-center font-semibold mt-3 text-gray-500">
+          <div className="text-[15px] lg:flex gap-3 items-center font-semibold mt-3 text-gray-400">
             <h3 className="">Popular Categories:</h3>
             <Link className=" underline p-2">Product Manager</Link>
             <Link className=" underline p-2">Frontend Dev</Link>
