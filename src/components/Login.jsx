@@ -1,15 +1,18 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { GoEyeClosed } from "react-icons/go";
 import { RxEyeOpen } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import githubImg from "../assets/githubIcon.png";
 import googleImg from "../assets/googleIcon.png";
 import signImg from "../assets/signin.png";
+import { AuthContext } from "../Context/MixContext";
 const Login = () => {
   const [isOpen, setIsOpen] = useState(false);
   const handleShowPassword = () => {
     setIsOpen(!isOpen);
   };
+  const result = useContext(AuthContext);
+  console.log(result);
   return (
     <div className="w-[95%] lg:w-[85%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 py-[10px] lg:py-[20px]">
       <div className="flex items-center">
