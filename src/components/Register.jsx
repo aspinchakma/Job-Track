@@ -1,16 +1,44 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { GoEyeClosed } from "react-icons/go";
 import { RxEyeOpen } from "react-icons/rx";
 import { Link } from "react-router-dom";
 import githubImg from "../assets/githubIcon.png";
 import googleImg from "../assets/googleIcon.png";
 import signImg from "../assets/login.png";
+import { AuthContext } from "../Context/MixContext";
 
 const Register = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [error, setError] = useState("");
+  const [userForm, setUserForm] = useState({
+    fullName: "",
+    url: "",
+    email: "",
+    password: "",
+  });
   const handleShowPassword = () => {
     setIsOpen(!isOpen);
   };
+  const { register } = useContext(AuthContext);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserForm({ ...userForm, [name]: value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!e.target.checkbox.checked) {
+      setError("Please Agree With Terms & Conditions.");
+      return;
+    }
+    setError("");
+    register(userForm.email, userForm.password)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((err) => setError(err.code));
+  };
+
   return (
     <div className="w-[95%] lg:w-[85%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 py-[10px] lg:py-[20px]">
       <div className="flex items-center">
@@ -40,7 +68,7 @@ const Register = () => {
           details are kept private
         </p>
         <div className="divider font-semibold mt-7 mb-4 h-[1px]">Or</div>
-        <form className="card-body w-full py-0">
+        <form onSubmit={handleSubmit} className="card-body w-full py-0">
           <fieldset className="fieldset">
             <label className="label text-[18px] mb-1 font-semibold text-black">
               Full Name
@@ -50,6 +78,8 @@ const Register = () => {
               className="input w-full mb-4 text-[16px] py-6 "
               placeholder="Full Name"
               required
+              name="fullName"
+              onChange={handleChange}
             />
             <label className="label text-[18px] mb-1 font-semibold text-black">
               Profile Link
@@ -59,6 +89,8 @@ const Register = () => {
               className="input w-full mb-4 text-[16px] py-6 "
               placeholder="Profile Link"
               required
+              name="url"
+              onChange={handleChange}
             />
             <label className="label text-[18px] mb-1 font-semibold text-black">
               Email
@@ -68,6 +100,8 @@ const Register = () => {
               className="input w-full mb-4 text-[16px] py-6 "
               placeholder="Email"
               required
+              name="email"
+              onChange={handleChange}
             />
             <label className="label text-[18px] mb-1 font-semibold text-black">
               Password
@@ -78,6 +112,8 @@ const Register = () => {
                 className="input w-full mb-0 text-[16px] py-6 "
                 placeholder="Password"
                 required
+                name="password"
+                onChange={handleChange}
               />
               <div className="absolute top-[50%] right-[10px] translate-y-[-50%] z-10">
                 {isOpen ? (
@@ -102,7 +138,7 @@ const Register = () => {
               </Link>
             </div>
             <label className="label text-[16px] mt-3">
-              <input type="checkbox" defaultChecked className="checkbox" />
+              <input type="checkbox" name="checkbox" className="checkbox" />
               By signing up, you agree to the{" "}
               <span className="underline font-semibold">terms of service</span>
             </label>
@@ -110,7 +146,9 @@ const Register = () => {
               Sign Up
             </button>
             <div className="h-[20px]">
-              <p className="text-error text-[16px] text-center font-bold"></p>
+              <p className="text-error text-[16px] text-center font-bold">
+                {error}
+              </p>
             </div>
             <p className="text-[15px] mx-auto">
               Already have an account?{" "}
