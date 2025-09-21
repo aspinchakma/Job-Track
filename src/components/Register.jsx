@@ -1,3 +1,4 @@
+import { updateProfile } from "firebase/auth";
 import { useContext, useState } from "react";
 import { GoEyeClosed } from "react-icons/go";
 import { RxEyeOpen } from "react-icons/rx";
@@ -6,6 +7,7 @@ import githubImg from "../assets/githubIcon.png";
 import googleImg from "../assets/googleIcon.png";
 import signImg from "../assets/login.png";
 import { AuthContext } from "../Context/MixContext";
+import { auth } from "../firebase/firebase.init";
 
 const Register = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,7 +36,14 @@ const Register = () => {
     setError("");
     register(userForm.email, userForm.password)
       .then((result) => {
-        console.log(result.user);
+        updateProfile(auth.currentUser, {
+          displayName: userForm.fullName,
+          photoURL: userForm.url,
+        })
+          .then(() => {
+            console.log(result);
+          })
+          .catch((err) => setError(err.code));
       })
       .catch((err) => setError(err.code));
   };
