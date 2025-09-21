@@ -22,7 +22,6 @@ const Header = () => {
       </li>
     </>
   );
-  console.log(user);
   return (
     <div>
       <div className="navbar lg:w-[85%] mx-auto w-[95%]">
