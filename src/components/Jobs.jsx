@@ -11,7 +11,6 @@ const Jobs = ({ job, website }) => {
     description,
     requirements,
   } = job;
-  console.log(job);
   return (
     <div className="lg:flex lg:flex-row lg:justify-between gap-3 shadow-lg px-3 py-10 rounded-lg items-center bg-gradient-to-r from-[#fffde7c1] to-white cursor-pointer">
       <div className="lg:flex gap-3 lg:items-center">

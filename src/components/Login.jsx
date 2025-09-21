@@ -23,9 +23,7 @@ const Login = () => {
     e.preventDefault();
     setError("");
     signIn(userForm.email, userForm.password)
-      .then((result) => {
-        console.log(result.user);
-      })
+      .then(() => {})
       .catch((err) => setError(err.code));
   };
 

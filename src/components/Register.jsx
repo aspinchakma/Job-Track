@@ -21,7 +21,7 @@ const Register = () => {
   const handleShowPassword = () => {
     setIsOpen(!isOpen);
   };
-  const { register } = useContext(AuthContext);
+  const { register, setUser } = useContext(AuthContext);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserForm({ ...userForm, [name]: value });
@@ -36,12 +36,13 @@ const Register = () => {
     setError("");
     register(userForm.email, userForm.password)
       .then((result) => {
+        setUser(result);
         updateProfile(auth.currentUser, {
           displayName: userForm.fullName,
           photoURL: userForm.url,
         })
           .then(() => {
-            console.log(result);
+            setUser(result.user);
           })
           .catch((err) => setError(err.code));
       })
@@ -138,14 +139,7 @@ const Register = () => {
                 )}
               </div>
             </div>
-            <div>
-              <Link
-                to={`/forgetpassword`}
-                className="link link-hover text-[17px]"
-              >
-                Forgot password?
-              </Link>
-            </div>
+            <div></div>
             <label className="label text-[16px] mt-3">
               <input type="checkbox" name="checkbox" className="checkbox" />
               By signing up, you agree to the{" "}

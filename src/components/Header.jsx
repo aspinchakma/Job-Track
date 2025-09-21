@@ -1,8 +1,11 @@
+import { useContext } from "react";
 import { Link, NavLink } from "react-router-dom";
 import logo from "../assets/logo.png";
 import userPhoto from "../assets/user.png";
+import { AuthContext } from "../Context/MixContext";
 
 const Header = () => {
+  const { user, handleSignOut } = useContext(AuthContext);
   const list = (
     <>
       <li>
@@ -19,6 +22,7 @@ const Header = () => {
       </li>
     </>
   );
+  console.log(user);
   return (
     <div>
       <div className="navbar lg:w-[85%] mx-auto w-[95%]">
@@ -54,19 +58,44 @@ const Header = () => {
           <ul className="menu menu-horizontal px-1">{list}</ul>
         </div>
         <div className="navbar-end gap-2">
-          <Link to={`/profile`}>
-            {" "}
-            <img className="rounded-full" src={userPhoto} alt="" />
-          </Link>
-          <Link
-            to={`/login`}
-            className="bg-[#061767] text-white border-2 border-[#061767] px-4 py-2 rounded-[4px] font-semibold hover:bg-white hover:text-[#061767] duration-500 cursor-pointer "
-          >
-            Log in
-          </Link>
-          <button className="bg-[#061767] text-white border-2 border-[#061767] px-4 py-2 rounded-[4px] font-semibold hover:bg-white hover:text-[#061767] duration-500 cursor-pointer ">
-            Log Out
-          </button>
+          <p>{user?.displayName}</p>
+          {user ? (
+            <>
+              {user && user.photoURL ? (
+                <Link to={`/profile`}>
+                  {" "}
+                  <img
+                    className="rounded-full w-[50px] h-[50px] object-cover"
+                    src={user.photoURL}
+                    alt=""
+                  />
+                </Link>
+              ) : (
+                <Link to={`/profile`}>
+                  {" "}
+                  <img
+                    className="rounded-full w-[50px] h-[50px] object-cover"
+                    src={userPhoto}
+                    alt=""
+                  />
+                </Link>
+              )}
+
+              <button
+                onClick={handleSignOut}
+                className="bg-[#061767] text-white border-2 border-[#061767] px-4 py-2 rounded-[4px] font-semibold hover:bg-white hover:text-[#061767] duration-500 cursor-pointer "
+              >
+                Log Out
+              </button>
+            </>
+          ) : (
+            <Link
+              to={`/login`}
+              className="bg-[#061767] text-white border-2 border-[#061767] px-4 py-2 rounded-[4px] font-semibold hover:bg-white hover:text-[#061767] duration-500 cursor-pointer "
+            >
+              Log in
+            </Link>
+          )}
         </div>
       </div>
     </div>
