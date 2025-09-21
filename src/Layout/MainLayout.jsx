@@ -5,7 +5,7 @@ import Header from "../components/Header";
 const MainLayout = () => {
   return (
     <div className="flex flex-col min-h-screen">
-      <div className="sticky top-0 bg-white  mb-8 z-10">
+      <div className="sticky top-0 bg-white  mb-4 z-10">
         <Header />
       </div>
       {/* content will change  */}

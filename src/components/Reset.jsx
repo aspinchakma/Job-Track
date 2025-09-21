@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import resetImg from "../assets/reset.png";
 const Reset = () => {
   return (
-    <div className="lg:w-[28%] w-[80%] mx-auto shadow-lg p-6 my-12 rounded-lg lg:p-10">
+    <div className="lg:w-[28%] w-[80%] mx-auto shadow-lg p-6 my-12 rounded-lg lg:p-8">
       <img className="w-full" src={resetImg} alt="" />
       <h2 className="font-semibold text-[24px] text-center mt-4 mb-2">
         Password <span className="text-[#163bde]">Reset</span>
