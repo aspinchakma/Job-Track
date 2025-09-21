@@ -8,11 +8,27 @@ import signImg from "../assets/signin.png";
 import { AuthContext } from "../Context/MixContext";
 const Login = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [userForm, setUserForm] = useState({ email: "", password: "" });
+  const [error, setError] = useState("");
   const handleShowPassword = () => {
     setIsOpen(!isOpen);
   };
-  const result = useContext(AuthContext);
-  console.log(result);
+  const { signIn } = useContext(AuthContext);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setUserForm({ ...userForm, [name]: value });
+  };
+  const handleSignIn = (e) => {
+    e.preventDefault();
+    setError("");
+    signIn(userForm.email, userForm.password)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((err) => setError(err.code));
+  };
+
   return (
     <div className="w-[95%] lg:w-[85%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 py-[10px] lg:py-[20px]">
       <div className="flex items-center">
@@ -42,15 +58,17 @@ const Login = () => {
           details are kept private
         </p>
         <div className="divider font-semibold mt-7 mb-4 h-[1px]">Or</div>
-        <form className="card-body w-full py-0">
+        <form onSubmit={handleSignIn} className="card-body w-full py-0">
           <fieldset className="fieldset">
             <label className="label text-[18px] mb-2 font-semibold text-black">
               Email
             </label>
             <input
               type="email"
+              name="email"
               className="input w-full mb-4 text-[16px] py-6 "
               placeholder="Email"
+              onChange={handleChange}
               required
             />
             <label className="label text-[18px] mb-2 font-semibold text-black">
@@ -62,6 +80,8 @@ const Login = () => {
                 className="input w-full mb-0 text-[16px] py-6 "
                 placeholder="Password"
                 required
+                name="password"
+                onChange={handleChange}
               />
               <div className="absolute top-[50%] right-[10px] translate-y-[-50%] z-10">
                 {isOpen ? (
@@ -90,7 +110,9 @@ const Login = () => {
               Login
             </button>
             <div className="h-[20px]">
-              <p className="text-error text-[16px] text-center font-bold"></p>
+              <p className="text-error text-[16px] text-center font-bold">
+                {error}
+              </p>
             </div>
             <p className="text-[15px] mx-auto">
               Don't Have An Account?{" "}
