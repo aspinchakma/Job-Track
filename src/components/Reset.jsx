@@ -1,20 +1,25 @@
 import { useContext, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import resetImg from "../assets/reset.png";
 import { AuthContext } from "../Context/MixContext";
+
 const Reset = () => {
   const { handleResetPassword } = useContext(AuthContext);
   const [error, setError] = useState("");
   const [success, setSuccess] = useState("");
+  const location = useLocation();
+  console.log(location);
   const handleFormSubmit = (e) => {
     e.preventDefault();
     setError("");
     setSuccess("");
 
     const email = e.target.email.value;
+    console.log(email);
     handleResetPassword(email)
       .then(() => {
         setSuccess("Password reset email sent!");
+        window.open("https://mail.google.com", "_blank");
       })
       .catch((err) => {
         setError(err.code);
@@ -40,8 +45,9 @@ const Reset = () => {
           placeholder="Email"
           required
           name="email"
+          defaultValue={`${location.state ? location.state : ""}`}
         />
-        <button className="py-3 bg-[#163bde] text-white font-semibold text-[16px] rounded-[4px] cursor-pointer border-1 border-[#163bde] hover:text-[#163bde] hover:bg-white mt-4 duration-500 w-full text-center">
+        <button className="py-3 bg-[#163bde] text-white font-semibold text-[16px] rounded-[4px] cursor-pointer border-1 border-[#163bde] hover:text-[#163bde] hover:bg-white mt-4 duration-500 w-full text-center inline-block">
           Reset password
         </button>
         <div className="h-[20px] mt-1">

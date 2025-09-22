@@ -30,7 +30,6 @@ const Login = () => {
       })
       .catch((err) => setError(err.code));
   };
-
   return (
     <div className="w-[95%] lg:w-[85%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 py-[10px] lg:py-[20px]">
       <div className="flex items-center">
@@ -102,6 +101,7 @@ const Login = () => {
             <div>
               <Link
                 to={`/resetpassword`}
+                state={userForm.email}
                 className="link link-hover text-[17px]"
               >
                 Forgot password?
