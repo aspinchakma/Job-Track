@@ -1,5 +1,6 @@
 import {
   createUserWithEmailAndPassword,
+  GithubAuthProvider,
   GoogleAuthProvider,
   onAuthStateChanged,
   sendPasswordResetEmail,
@@ -53,6 +54,12 @@ const AuthProfider = ({ children }) => {
   const handeSignInWithGoogle = () => {
     return signInWithPopup(auth, googleProvider);
   };
+
+  // sign in with github
+  const githubProvider = new GithubAuthProvider();
+  const handleSignInWithGithub = () => {
+    return signInWithPopup(auth, githubProvider);
+  };
   const data = {
     register,
     signIn,
@@ -62,6 +69,7 @@ const AuthProfider = ({ children }) => {
     handleResetPassword,
     isLoading,
     handeSignInWithGoogle,
+    handleSignInWithGithub,
   };
   return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>;
 };

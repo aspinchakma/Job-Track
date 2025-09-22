@@ -22,7 +22,8 @@ const Register = () => {
     setIsOpen(!isOpen);
   };
   const navigate = useNavigate();
-  const { register, setUser, handeSignInWithGoogle } = useContext(AuthContext);
+  const { register, setUser, handeSignInWithGoogle, handleSignInWithGithub } =
+    useContext(AuthContext);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserForm({ ...userForm, [name]: value });
@@ -56,6 +57,16 @@ const Register = () => {
       .then(() => navigate(`${location.state ? location.state : "/"}`))
       .catch((err) => setError(err.code));
   };
+
+  // sign in with github
+  const signInWithGithub = () => {
+    handleSignInWithGithub()
+      .then((result) => {
+        navigate(`${location.state ? location.state : "/"}`);
+        console.log(result.user);
+      })
+      .catch((err) => setError(err.code));
+  };
   return (
     <div className="w-[95%] lg:w-[85%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 py-[10px] lg:py-[20px]">
       <div className="flex items-center">
@@ -78,7 +89,10 @@ const Register = () => {
             <img className="w-[30px]" src={googleImg} alt="" />{" "}
             <span className="text-[17px]">Sign up with Google</span>
           </button>
-          <button className="w-full p-4 bg-[#eceef9] flex gap-2 items-center rounded-[4px] cursor-pointer">
+          <button
+            onClick={signInWithGithub}
+            className="w-full p-4 bg-[#eceef9] flex gap-2 items-center rounded-[4px] cursor-pointer"
+          >
             <img className="w-[40px]" src={githubImg} alt="" />{" "}
             <span className="text-[17px]">Sign up with Github</span>
           </button>
