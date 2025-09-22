@@ -15,7 +15,7 @@ const Login = () => {
   const handleShowPassword = () => {
     setIsOpen(!isOpen);
   };
-  const { signIn } = useContext(AuthContext);
+  const { signIn, handeSignInWithGoogle } = useContext(AuthContext);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -28,6 +28,12 @@ const Login = () => {
       .then(() => {
         navigate(`${location.state ? location.state : "/"}`);
       })
+      .catch((err) => setError(err.code));
+  };
+
+  const signInWithGoogle = () => {
+    handeSignInWithGoogle()
+      .then(() => navigate(`${location.state ? location.state : "/"}`))
       .catch((err) => setError(err.code));
   };
   return (
@@ -45,7 +51,10 @@ const Login = () => {
 
         {/* sign up with others */}
         <div className="space-y-[13px] my-6">
-          <button className="w-full p-4 bg-[#eceef9] flex gap-2 items-center rounded-[4px] cursor-pointer">
+          <button
+            onClick={signInWithGoogle}
+            className="w-full p-4 bg-[#eceef9] flex gap-2 items-center rounded-[4px] cursor-pointer"
+          >
             <img className="w-[30px]" src={googleImg} alt="" />{" "}
             <span className="text-[17px]">Sign up with Google</span>
           </button>

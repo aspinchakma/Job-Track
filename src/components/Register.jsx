@@ -2,7 +2,7 @@ import { updateProfile } from "firebase/auth";
 import { useContext, useState } from "react";
 import { GoEyeClosed } from "react-icons/go";
 import { RxEyeOpen } from "react-icons/rx";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import githubImg from "../assets/githubIcon.png";
 import googleImg from "../assets/googleIcon.png";
 import signImg from "../assets/login.png";
@@ -21,7 +21,8 @@ const Register = () => {
   const handleShowPassword = () => {
     setIsOpen(!isOpen);
   };
-  const { register, setUser } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const { register, setUser, handeSignInWithGoogle } = useContext(AuthContext);
   const handleChange = (e) => {
     const { name, value } = e.target;
     setUserForm({ ...userForm, [name]: value });
@@ -49,6 +50,12 @@ const Register = () => {
       .catch((err) => setError(err.code));
   };
 
+  // sign in with google
+  const signInWithGoogle = () => {
+    handeSignInWithGoogle()
+      .then(() => navigate(`${location.state ? location.state : "/"}`))
+      .catch((err) => setError(err.code));
+  };
   return (
     <div className="w-[95%] lg:w-[85%] mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 py-[10px] lg:py-[20px]">
       <div className="flex items-center">
@@ -64,7 +71,10 @@ const Register = () => {
 
         {/* sign up with others */}
         <div className="space-y-[13px] my-6">
-          <button className="w-full p-4 bg-[#eceef9] flex gap-2 items-center rounded-[4px] cursor-pointer">
+          <button
+            onClick={signInWithGoogle}
+            className="w-full p-4 bg-[#eceef9] flex gap-2 items-center rounded-[4px] cursor-pointer"
+          >
             <img className="w-[30px]" src={googleImg} alt="" />{" "}
             <span className="text-[17px]">Sign up with Google</span>
           </button>
