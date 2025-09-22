@@ -13,7 +13,7 @@ const ComapnyDetails = () => {
   const companies = useContext(CompaniesContext);
   const targetedCompanyData = companies.find((comp) => comp.id == id);
   return (
-    <div className="w-[95%] lg:w-[85%] mx-auto mt-5">
+    <div className="w-[95%] lg:w-[85%] mx-auto mt-5 mb-10">
       <div className="px-[10px] py-[30px] lg:p-5 shadow-lg rounded-lg">
         <img
           className="min-h-[250px] rounded-lg object-cover"
