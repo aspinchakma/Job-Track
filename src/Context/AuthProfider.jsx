@@ -11,6 +11,7 @@ import { AuthContext } from "./MixContext";
 
 const AuthProfider = ({ children }) => {
   const [user, setUser] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
   // register
   const register = (email, password) => {
     return createUserWithEmailAndPassword(auth, email, password);
@@ -27,6 +28,7 @@ const AuthProfider = ({ children }) => {
       if (userInfo) {
         setUser(userInfo);
       }
+      setIsLoading(false);
     });
 
     return () => unSubscribed();
@@ -50,6 +52,7 @@ const AuthProfider = ({ children }) => {
     setUser,
     handleSignOut,
     handleResetPassword,
+    isLoading,
   };
   return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>;
 };

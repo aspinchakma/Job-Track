@@ -1,5 +1,4 @@
 import { createBrowserRouter } from "react-router-dom";
-import MainLayout from "../Layout/MainLayout";
 import ComapnyDetails from "../components/ComapnyDetails";
 import Error from "../components/Error";
 import Login from "../components/Login";
@@ -7,6 +6,8 @@ import MainHome from "../components/MainHome";
 import Profile from "../components/Profile";
 import Register from "../components/Register";
 import Reset from "../components/Reset";
+import MainLayout from "../Layout/MainLayout";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
 
 const router = createBrowserRouter([
   {
@@ -20,11 +21,19 @@ const router = createBrowserRouter([
       },
       {
         path: "/company/:id",
-        element: <ComapnyDetails />,
+        element: (
+          <PrivateRoute>
+            <ComapnyDetails />
+          </PrivateRoute>
+        ),
       },
       {
         path: "profile",
-        element: <Profile />,
+        element: (
+          <PrivateRoute>
+            <Profile />
+          </PrivateRoute>
+        ),
       },
       {
         path: "/login",

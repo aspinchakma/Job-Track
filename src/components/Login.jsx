@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { GoEyeClosed } from "react-icons/go";
 import { RxEyeOpen } from "react-icons/rx";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import githubImg from "../assets/githubIcon.png";
 import googleImg from "../assets/googleIcon.png";
 import signImg from "../assets/signin.png";
@@ -10,6 +10,9 @@ const Login = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [userForm, setUserForm] = useState({ email: "", password: "" });
   const [error, setError] = useState("");
+  const location = useLocation();
+  const navigate = useNavigate();
+  console.log(location);
   const handleShowPassword = () => {
     setIsOpen(!isOpen);
   };
@@ -23,7 +26,9 @@ const Login = () => {
     e.preventDefault();
     setError("");
     signIn(userForm.email, userForm.password)
-      .then(() => {})
+      .then(() => {
+        navigate(`${location.state ? location.state : "/"}`);
+      })
       .catch((err) => setError(err.code));
   };
 
