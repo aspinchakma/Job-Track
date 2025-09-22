@@ -1,6 +1,6 @@
 const FAQ = () => {
   return (
-    <div className="w-[95%] lg:w-[85%] mx-auto">
+    <div className="w-[95%] lg:w-[85%] mx-auto mb-5 lg:mb-10">
       <h2 className="text-[#2747d5] w-fit px-6 py-2 rounded-full mx-auto bg-[#dee3f7]">
         F.A.Qs
       </h2>
