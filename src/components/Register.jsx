@@ -1,5 +1,5 @@
 import { updateProfile } from "firebase/auth";
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GoEyeClosed } from "react-icons/go";
 import { RxEyeOpen } from "react-icons/rx";
 import { Link, useNavigate } from "react-router-dom";
@@ -12,6 +12,9 @@ import { auth } from "../firebase/firebase.init";
 const Register = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [error, setError] = useState("");
+  useEffect(() => {
+    document.title = "Register";
+  }, []);
   const [userForm, setUserForm] = useState({
     fullName: "",
     url: "",

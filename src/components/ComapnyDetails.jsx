@@ -1,4 +1,4 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { FaLocationDot } from "react-icons/fa6";
 import { IoIosPersonAdd } from "react-icons/io";
 import { IoOpenOutline } from "react-icons/io5";
@@ -12,6 +12,9 @@ const ComapnyDetails = () => {
   const { id } = useParams();
   const companies = useContext(CompaniesContext);
   const targetedCompanyData = companies.find((comp) => comp.id == id);
+  useEffect(() => {
+    document.title = `${targetedCompanyData.name}`;
+  }, []);
   return (
     <div className="w-[95%] lg:w-[85%] mx-auto mt-5 mb-10">
       <div className="px-[10px] py-[30px] lg:p-5 shadow-lg rounded-lg">

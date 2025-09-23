@@ -1,6 +1,29 @@
+import gsap from "gsap";
+import { SplitText } from "gsap/SplitText";
+import { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
-
+gsap.registerPlugin(SplitText);
 const Banner = () => {
+  const textRef = useRef();
+
+  useEffect(() => {
+    const split = new SplitText(textRef.current, {
+      type: "words",
+      aria: "hidden",
+    });
+    gsap.from(split.words, {
+      opacity: 0,
+      duration: 2,
+      ease: "sine.out",
+      stagger: 0.1,
+    });
+
+    // cleanup (optional)
+    return () => {
+      split.revert();
+    };
+  }, []);
+
   return (
     <div className="bg-[#061767] text-white py-[60px]">
       <div className="w-[95%] mx-auto lg:w-[85%] ">
@@ -8,7 +31,10 @@ const Banner = () => {
           <p className="lg:mb-5">
             <span className="font-bold">#1</span> PLATFORM FOR JOBS
           </p>
-          <h1 className="text-[30px] lg:text-[50px] font-extrabold lg:leading-[60px]">
+          <h1
+            ref={textRef}
+            className="text-[30px] lg:text-[50px] font-extrabold lg:leading-[60px]"
+          >
             Find Your <span className="text-[#EE7236]">Dream Job</span> That
             Suit With Exciting Opportunities
           </h1>

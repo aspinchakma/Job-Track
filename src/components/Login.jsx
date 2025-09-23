@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import { GoEyeClosed } from "react-icons/go";
 import { RxEyeOpen } from "react-icons/rx";
 import { Link, useLocation, useNavigate } from "react-router-dom";
@@ -15,6 +15,9 @@ const Login = () => {
   const handleShowPassword = () => {
     setIsOpen(!isOpen);
   };
+  useEffect(() => {
+    document.title = "Sign in";
+  }, {});
   const { signIn, handeSignInWithGoogle, handleSignInWithGithub } =
     useContext(AuthContext);
 
