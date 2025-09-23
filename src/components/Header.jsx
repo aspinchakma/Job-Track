@@ -57,7 +57,7 @@ const Header = () => {
           <ul className="menu menu-horizontal px-1">{list}</ul>
         </div>
         <div className="navbar-end gap-2">
-          <p>{user?.displayName}</p>
+          <p className="hidden lg:block">{user?.displayName}</p>
           {user ? (
             <>
               {user && user.photoURL ? (
