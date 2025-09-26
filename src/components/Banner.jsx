@@ -43,13 +43,13 @@ const Banner = () => {
             job-finding companion! We've curated a platform that connects
             talented individuals with exciting opportunities.
           </p>
-          <div className="flex gap-3">
+          <div className="lg:flex gap-3">
             <input
               type="text"
               placeholder="Job title, Salary, or Companies...."
-              className="bg-white flex-1 px-4 rounded-[4x] text-gray-700"
+              className="bg-white flex-1 px-4 py-3 lg:py-0 rounded-[4x] text-gray-700 w-full lg:w-auto"
             />
-            <button className="bg-[#10141d] text-white px-6 py-3 cursor-pointer">
+            <button className="bg-[#10141d] text-white px-6 py-3 cursor-pointer w-[70%] lg:w-fit mt-2 lg:mt-0">
               Explore Now
             </button>
           </div>

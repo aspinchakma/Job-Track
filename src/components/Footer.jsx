@@ -41,9 +41,9 @@ const Footer = () => {
               <h3 className="text-[24px] lg:text-[30px] font-extrabold text-white max-w-[300px] leading-[30px]">
                 Subscribe to our newsletter
               </h3>
-              <div className="mt-3 flex items-center gap-2">
+              <div className="mt-3 lg:flex items-center gap-2">
                 <input
-                  className="bg-white rounded-lg px-3 py-3 text-black"
+                  className="bg-white rounded-lg px-3 py-3 text-black mb-2 lg:mb-0 w-full lg:w-auto"
                   type="email"
                   placeholder="Enter Your Email"
                 />
